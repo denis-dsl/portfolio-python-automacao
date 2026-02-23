@@ -1,4 +1,5 @@
 """Criação de artifacts de execução (pasta por run + summary.json)."""
+
 from __future__ import annotations
 
 from datetime import date, timedelta
@@ -44,8 +45,10 @@ def _date_mixed(d: date) -> str:
         return d.isoformat()
     return f"() {d.strftime('%d/%m/%Y')}"
 
+
 def _round2(x: float) -> float:
     return round(float(x), 2)
+
 
 def _dv_mod11(number: str) -> str:
     """Dígito verificador Mod11 simples (pra parecer bancário)."""
@@ -58,6 +61,7 @@ def _dv_mod11(number: str) -> str:
         dv = 0
     return str(dv)
 
+
 def _generate_contract() -> str:
     """
     Gera contrato bancário fictício:
@@ -69,6 +73,7 @@ def _generate_contract() -> str:
     body = f"{randint(0, 9999999999):010d}"
     base = prefix + body
     return f"{base}-{_dv_mod11(base)}"
+
 
 def _choose_scenario() -> str:
     """
@@ -92,6 +97,7 @@ def _choose_scenario() -> str:
     if r <= 92:
         return "refin_substituicao"
     return "cancelado_pos_pagamento"
+
 
 def _simulate_contract_events(emissao: date, vlr_liberado: float) -> dict[str, Any]:
     scenario = _choose_scenario()
@@ -154,8 +160,9 @@ def _simulate_contract_events(emissao: date, vlr_liberado: float) -> dict[str, A
 
         if random() < 0.25:
             ted = "SIM"
-            valor_devolvido = _round2(min((valor_pago or 0) * (0.1 + random() * 0.5),
-                                          (valor_pago or 0)))
+            valor_devolvido = _round2(
+                min((valor_pago or 0) * (0.1 + random() * 0.5), (valor_pago or 0))
+            )
 
     return {
         "Pago": pago,
@@ -165,6 +172,7 @@ def _simulate_contract_events(emissao: date, vlr_liberado: float) -> dict[str, A
         "TED/Devolvida": ted,
         "Valor Devolvido": valor_devolvido,
     }
+
 
 def generate_excel(path: Path, rows: int = 200, mode: str = "realistic") -> Path:
     """

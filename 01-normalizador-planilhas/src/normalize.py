@@ -301,6 +301,7 @@ def generate_validation_report(df: pd.DataFrame, path: Path) -> bool:
 
     return False
 
+
 def _apply_with_stats(series: pd.Series, func) -> tuple[pd.Series, dict[str, int]]:
     """Aplica func e conta sucesso/falha (None)."""
     before_non_empty = series.notna().sum()

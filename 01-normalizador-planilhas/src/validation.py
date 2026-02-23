@@ -50,21 +50,27 @@ def validate_dataframe(df: pd.DataFrame) -> list[Issue]:
         # Pago = SIM -> precisa data e valor
         if pago == "SIM":
             if pd.isna(data_pag):
-                issues.append(Issue("ERROR", idx, contrato, cliente,
-                                    "Pago=SIM mas Data Pagamento vazio"))
+                issues.append(
+                    Issue("ERROR", idx, contrato, cliente, "Pago=SIM mas Data Pagamento vazio")
+                )
             if pd.isna(vlr_pago):
-                issues.append(Issue("ERROR", idx, contrato, cliente,
-                                    "Pago=SIM mas VALOR PAGO vazio"))
+                issues.append(
+                    Issue("ERROR", idx, contrato, cliente, "Pago=SIM mas VALOR PAGO vazio")
+                )
 
         # Se não pago, mas valor pago preenchido -> WARN (às vezes é pré-lançamento)
         if pago != "SIM" and (not pd.isna(vlr_pago)):
-            issues.append(Issue("WARN", idx, contrato, cliente,
-                                "Pago!=SIM mas VALOR PAGO preenchido"))
+            issues.append(
+                Issue("WARN", idx, contrato, cliente, "Pago!=SIM mas VALOR PAGO preenchido")
+            )
 
         # TED/Devolvida = SIM -> precisa valor devolvido
         if ted == "SIM" and pd.isna(vlr_dev):
-            issues.append(Issue("ERROR", idx, contrato, cliente,
-                                "TED/Devolvida=SIM mas Valor Devolvido vazio"))
+            issues.append(
+                Issue(
+                    "ERROR", idx, contrato, cliente, "TED/Devolvida=SIM mas Valor Devolvido vazio"
+                )
+            )
 
     return issues
 
