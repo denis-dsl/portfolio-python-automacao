@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+.venv/
+
+# VSCode
+.vscode/
+
+# Ruff
+.ruff_cache/
+
+# Build artifacts
+build/
+dist/
+
+# Runtime outputs
+output/
