@@ -42,9 +42,18 @@ jobs:
           python -m src.main generate --mode realistic --rows 30 --out data/input_ci.xlsx
           python -m src.main normalize data/input_ci.xlsx output/clean_ci.xlsx
 
-      - name: Upload run artifacts
+      - name: Package evidence (zip)
+        working-directory: 01-normalizador-planilhas
+        run: |
+          mkdir evidence
+          cp data/input_ci.xlsx evidence/
+          cp output/runs/*/*.xlsx evidence/
+          cp output/runs/*/*.json evidence/ || true
+          cp output/runs/*/*.csv evidence/ || true
+          zip -r evidence.zip evidence
+
+      - name: Upload evidence artifact
         uses: actions/upload-artifact@v4
         with:
-          name: run-artifacts
-          path: 01-normalizador-planilhas/output/runs/**
-          if-no-files-found: warn
+          name: before-after-evidence
+          path: 01-normalizador-planilhas/evidence.zip
