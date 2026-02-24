@@ -46,10 +46,13 @@ jobs:
         working-directory: 01-normalizador-planilhas
         run: |
           mkdir -p evidence
+
           cp data/input_ci.xlsx evidence/
-          cp output/runs/*/*.xlsx evidence/ || true
-          cp output/runs/*/*.json evidence/ || true
-          cp output/runs/*/*.csv evidence/ || true
+
+          shopt -s nullglob
+          for f in output/runs/*/*.xlsx; do cp "$f" evidence/; done
+          for f in output/runs/*/*.json; do cp "$f" evidence/; done
+          for f in output/runs/*/*.csv; do cp "$f" evidence/; done
 
       - name: Upload evidence artifact
         uses: actions/upload-artifact@v4
