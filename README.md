@@ -10,3 +10,8 @@ Coleção de projetos de automação em Python com foco corporativo.
 Normalização, validação e geração de artifacts auditáveis.
 
 ➡ Veja detalhes em `01-normalizador-planilhas/README.md`
+
+### 02 - Conciliação Bancária (CLI)
+Normalização, validação e geração de artifacts auditáveis.
+
+➡ Veja detalhes em `02-conciliacao-bancaria/README.md`
