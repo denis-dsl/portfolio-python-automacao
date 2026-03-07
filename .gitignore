@@ -1,19 +1,56 @@
+# ===============================
 # Python
+# ===============================
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.py[cod]
 
-# Virtual env
-.venv/
-
-# VSCode
-.vscode/
+# pytest
+.pytest_cache/
 
 # Ruff
 .ruff_cache/
 
+# ===============================
+# Virtual environments
+# ===============================
+.venv/
+venv/
+env/
+
+# ===============================
+# IDE / Editor
+# ===============================
+.vscode/
+.idea/
+
+# ===============================
 # Build artifacts
+# ===============================
 build/
 dist/
+*.egg-info/
 
-# Runtime outputs
+# ===============================
+# Project runtime outputs
+# ===============================
 output/
+logs/
+
+# Projeto 02 outputs
+02-conciliacao-bancaria/output/
+02-conciliacao-bancaria/logs/
+
+# ===============================
+# Temporary / OS
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Optional: ignore local data
+# (se não quiser subir planilhas)
+# ===============================
+02-conciliacao-bancaria/data/*.xlsx
