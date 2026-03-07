@@ -12,6 +12,6 @@ Normalização, validação e geração de artifacts auditáveis.
 ➡ Veja detalhes em `01-normalizador-planilhas/README.md`
 
 ### 02 - Conciliação Bancária (CLI)
-Normalização, validação e geração de artifacts auditáveis.
+Automatizar a conciliação entre dois conjuntos de lançamentos financeiros.
 
 ➡ Veja detalhes em `02-conciliacao-bancaria/README.md`
