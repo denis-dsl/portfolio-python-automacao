@@ -101,6 +101,11 @@ Colunas mínimas obrigatórias:
 10/02/2026	PIX RECEBIDO JOAO	1500	L001<br>
 12/02/2026	TARIFA BANCARIA	    -12.50	
 
+| data | descricao | valor | documento |
+|------|-----------|------|-----------|
+| 10/02/2026 | PIX RECEBIDO JOAO | 1500 | L001 |
+| 12/02/2026 | TARIFA BANCARIA | -12.50 | |
+
 ## Sistema / ERP
 
 # Colunas mínimas obrigatórias:
