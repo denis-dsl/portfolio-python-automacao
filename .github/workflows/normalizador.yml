@@ -81,4 +81,4 @@ jobs:
           to: denis.dvps@gmail.com
           from: ${{ secrets.GMAIL_USER }}
           secure: true
-          attachments: 01-normalizador-planilhas/evidence/**
+          attachments: 01-normalizador-planilhas/evidence/*
