@@ -267,30 +267,30 @@ Exemplos:
 
 #  Casos cobertos pelo projeto
 
-PIX com identificador direto
-Documento presente no histórico do sistema
-Lançamentos compensados em dias diferentes
-Descrições diferentes mas semanticamente próximas
-Divergências na mesma data
-Lançamentos sem correspondência
+- PIX com identificador direto
+- Documento presente no histórico do sistema
+- Lançamentos compensados em dias diferentes
+- Descrições diferentes mas semanticamente próximas
+- Divergências na mesma data
+- Lançamentos sem correspondência
 
 # Tecnologias utilizadas
 
-Python
-pandas
-openpyxl
-argparse
-logging
-dataclasses
+- Python
+- pandas
+- openpyxl
+- argparse
+- logging
+- dataclasses
 
 # Melhorias futuras
 
-Empacotamento como .exe
-Interface gráfica
-Testes automatizados
-Otimização para grandes volumes
-Matching com tolerância de valor
-Regras específicas por tipo de transação (PIX, TED, boleto, tarifas)
+- Empacotamento como .exe
+- Interface gráfica
+- Testes automatizados
+- Otimização para grandes volumes
+- Matching com tolerância de valor
+- Regras específicas por tipo de transação (PIX, TED, boleto, tarifas)
 
 # Autor
 
