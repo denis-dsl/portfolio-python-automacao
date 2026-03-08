@@ -221,7 +221,7 @@ OK (JANELA)
 
 ## Saída gerada
 ### Relatório Excel
-### Arquivo gerado:
+Arquivo gerado:
 output/conciliado.xlsx
 
 ### Abas geradas:
@@ -233,8 +233,7 @@ resumo
 
 # Log de execução
 
-### Arquivo:
-
+Arquivo:
 logs/conciliacao.log
 
 ### Exemplo de log:
