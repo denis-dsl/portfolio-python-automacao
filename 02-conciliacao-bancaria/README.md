@@ -122,43 +122,43 @@ Colunas mínimas obrigatórias:
 | 12/02/2026 | Tarifa bancária | -12.50 | L003 |
 
 # Como usar
-## Ajuda geral
+### Ajuda geral
 
 python src/main.py -h
 
 ## 1. Gerar arquivos de exemplo
 
-## Cria arquivos de teste na pasta data.
+### Cria arquivos de teste na pasta data:
 
 python src/main.py gerar-exemplo
 
 ## 2. Validar colunas dos arquivos
 
-## Verifica se os arquivos possuem as colunas mínimas necessárias.
+### Verifica se os arquivos possuem as colunas mínimas necessárias.
 
 python src/main.py validar
 
 ## 3. Executar a conciliação
-## Execução padrão
+### Execução padrão
 
 python src/main.py conciliar
 
-# Com parâmetros personalizados
+### Com parâmetros personalizados
 python src/main.py conciliar --dias 2 --tolerancia-valor 0.05
 
-# Desabilitar matching por texto
+### Desabilitar matching por texto
 python src/main.py conciliar --sem-texto
 
-# Ignorar data na chave
+### Ignorar data na chave
 python src/main.py conciliar --nao-usar-data
 
-# Usar arquivos específicos
+### Usar arquivos específicos
 python src/main.py conciliar \
 --extrato "C:\temp\extrato.xlsx" \
 --sistema "C:\temp\sistema.xlsx" \
 --saida "C:\temp\saida.xlsx"
 
-# Parâmetros principais do subcomando conciliar
+### Parâmetros principais do subcomando conciliar
 
 --extrato                   caminho do arquivo de extrato
 
