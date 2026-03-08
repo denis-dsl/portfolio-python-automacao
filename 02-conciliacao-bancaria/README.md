@@ -38,18 +38,18 @@ Automatizar a conciliação entre dois conjuntos de lançamentos financeiros, id
 ---
 
 # Estrutura do projeto
-├── data/
-│ ├── extrato.xlsx
-│ └── sistema.xlsx
-├── logs/
-│ └── conciliacao.log
-├── output/
-│ └── conciliado.xlsx
-├── src/
-│ ├── conciliar.py
-│ └── main.py
-├── requirements.txt
-└── README.md
+├── data/<br>
+│ ├── extrato.xlsx<br>
+│ └── sistema.xlsx<br>
+├── logs/<br>
+│ └── conciliacao.log<br>
+├── output/<br>
+│ └── conciliado.xlsx<br>
+├── src/<br>
+│ ├── conciliar.py<br>
+│ └── main.py<br>
+├── requirements.txt<br>
+└── README.md<br>
 
 ---
 
@@ -98,7 +98,7 @@ Colunas mínimas obrigatórias:
 # Exemplo:
 
 # data	    descricao	        valor	documento
-10/02/2026	PIX RECEBIDO JOAO	1500	L001
+10/02/2026	PIX RECEBIDO JOAO	1500	L001<br>
 12/02/2026	TARIFA BANCARIA	    -12.50	
 
 ## Sistema / ERP
@@ -115,29 +115,29 @@ Colunas mínimas obrigatórias:
 
 # Exemplo:
 
-# data	    historico	        valor	id_lancamento
-10/02/2026	Recebimento João	1500	L001
-12/02/2026	Tarifa bancária	    -12.50	L003
+# data	    historico	        valor	  id_lancamento
+10/02/2026	Recebimento João	1500	  L001<br>
+12/02/2026	Tarifa bancária	  -12.50	L003
 
-## Como usar
-# Ajuda geral
+# Como usar
+## Ajuda geral
 
 python src/main.py -h
 
 ## 1. Gerar arquivos de exemplo
 
-# Cria arquivos de teste na pasta data.
+## Cria arquivos de teste na pasta data.
 
 python src/main.py gerar-exemplo
 
 ## 2. Validar colunas dos arquivos
 
-# Verifica se os arquivos possuem as colunas mínimas necessárias.
+## Verifica se os arquivos possuem as colunas mínimas necessárias.
 
 python src/main.py validar
 
 ## 3. Executar a conciliação
-# Execução padrão
+## Execução padrão
 
 python src/main.py conciliar
 
@@ -179,9 +179,9 @@ python src/main.py conciliar \
 --limite-similaridade       define o score mínimo para aceitar matching por texto
 
 
-## Estratégia de conciliação   O motor de conciliação segue a seguinte ordem de prioridade:
+# Estratégia de conciliação   O motor de conciliação segue a seguinte ordem de prioridade:
 
-# 1. Documento exato
+## 1. Documento exato
 
 Concilia quando:
 documento == id_lancamento
@@ -189,14 +189,14 @@ documento == id_lancamento
 Status gerado:
 OK (DOC)
 
-# 2. Documento dentro do histórico
+## 2. Documento dentro do histórico
 
 Quando o documento do extrato aparece dentro do campo historico do sistema.
 
 Status gerado:
 OK (DOC-HIST)
 
-# 3. Valor + janela de dias + similaridade textual
+## 3. Valor + janela de dias + similaridade textual
 
 Se não houver match por documento, o sistema tenta:
 
@@ -209,15 +209,15 @@ Se não houver match por documento, o sistema tenta:
 Status gerado:
 OK (JANELA+TEXTO)
 
-# 4. Valor + janela de dias
+## 4. Valor + janela de dias
 
 Quando o matching por texto está desativado.
 
 Status gerado:
 OK (JANELA)
 
-## Saída gerada
-# Relatório Excel
+# Saída gerada
+## Relatório Excel
 
 Arquivo gerado:
 output/conciliado.xlsx
@@ -262,7 +262,7 @@ Exemplos:
 
 - Dados inválidos
 
-##  Casos cobertos pelo projeto
+#  Casos cobertos pelo projeto
 
 PIX com identificador direto
 Documento presente no histórico do sistema
@@ -271,7 +271,7 @@ Descrições diferentes mas semanticamente próximas
 Divergências na mesma data
 Lançamentos sem correspondência
 
-## Tecnologias utilizadas
+# Tecnologias utilizadas
 
 Python
 pandas
@@ -280,7 +280,7 @@ argparse
 logging
 dataclasses
 
-## Melhorias futuras
+# Melhorias futuras
 
 Empacotamento como .exe
 Interface gráfica
@@ -289,6 +289,6 @@ Otimização para grandes volumes
 Matching com tolerância de valor
 Regras específicas por tipo de transação (PIX, TED, boleto, tarifas)
 
-Autor
+# Autor
 
 Projeto desenvolvido como parte de um portfólio de automação em Python.
