@@ -82,8 +82,8 @@ Arquivo requirements.txt:
 pandas
 openpyxl
 
-## Formato esperado dos arquivos
-# Extrato bancário
+# Formato esperado dos arquivos
+## Extrato bancário
 
 Colunas mínimas obrigatórias:
 
@@ -102,19 +102,18 @@ Colunas mínimas obrigatórias:
 | 10/02/2026 | PIX RECEBIDO JOAO | 1500 | L001 |
 | 12/02/2026 | TARIFA BANCARIA | -12.50 | |
 
-## Sistema / ERP
-
-# Colunas mínimas obrigatórias:
+# Sistema / ERP
+## Colunas mínimas obrigatórias:
 
 - data
 - historico
 - valor
 
-# Coluna opcional:
+## Coluna opcional:
 
 - id_lancamento
 
-# Exemplo:
+## Exemplo:
 
 | data | historico | valor | id_lancamento |
 |------|-----------|------|---------------|
@@ -181,21 +180,23 @@ python src/main.py conciliar \
 --limite-similaridade       define o score mínimo para aceitar matching por texto
 
 
-# Estratégia de conciliação   O motor de conciliação segue a seguinte ordem de prioridade:
+# Estratégia de conciliação
+
+O motor de conciliação segue a seguinte ordem de prioridade:
 
 ## 1. Documento exato
 
-Concilia quando:
+### Concilia quando:
 documento == id_lancamento
 
-Status gerado:
+### Status gerado:
 OK (DOC)
 
 ## 2. Documento dentro do histórico
 
 Quando o documento do extrato aparece dentro do campo historico do sistema.
 
-Status gerado:
+### Status gerado:
 OK (DOC-HIST)
 
 ## 3. Valor + janela de dias + similaridade textual
@@ -208,24 +209,23 @@ Se não houver match por documento, o sistema tenta:
 
 - Melhor similaridade entre descricao e historico
 
-Status gerado:
+### Status gerado:
 OK (JANELA+TEXTO)
 
 ## 4. Valor + janela de dias
 
 Quando o matching por texto está desativado.
 
-Status gerado:
+### Status gerado:
 OK (JANELA)
 
-# Saída gerada
+## Saída gerada
 ## Relatório Excel
 
-Arquivo gerado:
+### Arquivo gerado:
 output/conciliado.xlsx
 
-Abas geradas:
-
+### Abas geradas:
 conciliados
 so_no_extrato
 so_no_sistema
@@ -234,12 +234,13 @@ resumo
 
 # Log de execução
 
-Arquivo:
+### Arquivo:
 
 logs/conciliacao.log
 
-Exemplo de log:
+### Exemplo de log:
 
+```text
 2026-03-07 | INFO | Extrato carregado com 4 registros
 2026-03-07 | INFO | Sistema carregado com 3 registros
 2026-03-07 | INFO | Conciliados: 2
