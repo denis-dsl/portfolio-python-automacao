@@ -8,6 +8,8 @@ on:
       - "01-normalizador-planilhas/**"
       - ".github/workflows/normalizador.yml"
   pull_request:
+    branches:
+      - main
     paths:
       - "01-normalizador-planilhas/**"
       - ".github/workflows/normalizador.yml"

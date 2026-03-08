@@ -1,13 +1,10 @@
-name: CI
+name: CI Global
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  workflow_dispatch:
 
 jobs:
-  test:
+  projeto-01:
     runs-on: ubuntu-latest
 
     steps:
@@ -36,27 +33,36 @@ jobs:
         working-directory: 01-normalizador-planilhas
         run: pytest -q
 
-      - name: Smoke test (generate + normalize)
-        working-directory: 01-normalizador-planilhas
-        run: |
-          python -m src.main generate --mode realistic --rows 30 --out data/input_ci.xlsx
-          python -m src.main normalize data/input_ci.xlsx output/clean_ci.xlsx
+  projeto-02:
+    runs-on: ubuntu-latest
 
-      - name: Collect evidence files
-        working-directory: 01-normalizador-planilhas
-        run: |
-          mkdir -p evidence
+    defaults:
+      run:
+        working-directory: 02-conciliacao-bancaria
 
-          cp data/input_ci.xlsx evidence/
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12"]
 
-          shopt -s nullglob
-          for f in output/runs/*/*.xlsx; do cp "$f" evidence/; done
-          for f in output/runs/*/*.json; do cp "$f" evidence/; done
-          for f in output/runs/*/*.csv; do cp "$f" evidence/; done
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Upload evidence artifact
-        uses: actions/upload-artifact@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          name: before-after-evidence
-          path: 01-normalizador-planilhas/evidence/**
-          if-no-files-found: error
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Generate sample files
+        run: python src/main.py gerar-exemplo
+
+      - name: Validate files
+        run: python src/main.py validar
+
+      - name: Run reconciliation
+        run: python src/main.py conciliar

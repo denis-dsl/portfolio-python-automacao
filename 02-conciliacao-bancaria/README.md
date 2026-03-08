@@ -260,9 +260,7 @@ A aplicação possui códigos de saída consistentes:
 Exemplos:
 
 - Arquivo não encontrado
-
 - Colunas obrigatórias ausentes
-
 - Dados inválidos
 
 #  Casos cobertos pelo projeto
