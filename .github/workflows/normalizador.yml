@@ -68,3 +68,22 @@ jobs:
           name: before-after-evidence
           path: 01-normalizador-planilhas/evidence/**
           if-no-files-found: error
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Send email with artifacts
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_PASS }}
+          subject: Resultado execução normalizador
+          body: Execução concluída. Artefatos em anexo.
+          to: seuemail@gmail.com
+          from: GitHub Actions
+          secure: true
+          attachments: artifacts/**
