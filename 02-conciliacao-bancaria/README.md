@@ -256,6 +256,12 @@ A aplicação possui códigos de saída consistentes:
 1	        Erro inesperado
 2	        Erro de entrada ou validação
 
+| Código | Significado |
+|------|--------|
+| 0 | Execução com sucesso |
+| 1 | Erro inesperado |
+| 2 | Erro de entrada ou validação |
+
 Exemplos:
 
 - Arquivo não encontrado
