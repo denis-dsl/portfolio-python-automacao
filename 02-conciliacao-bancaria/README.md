@@ -220,8 +220,7 @@ Quando o matching por texto está desativado.
 OK (JANELA)
 
 ## Saída gerada
-## Relatório Excel
-
+### Relatório Excel
 ### Arquivo gerado:
 output/conciliado.xlsx
 
