@@ -2,7 +2,8 @@ name: Projeto 02 - Conciliacao Bancaria
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
     paths:
       - "02-conciliacao-bancaria/**"
       - ".github/workflows/projeto-02.yml"
