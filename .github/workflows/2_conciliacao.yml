@@ -6,12 +6,12 @@ on:
       - main
     paths:
       - "02-conciliacao-bancaria/**"
-      - ".github/workflows/projeto-02.yml"
+      - ".github/workflows/2_conciliacao.yml"
   pull_request:
     branches: [main]
     paths:
       - "02-conciliacao-bancaria/**"
-      - ".github/workflows/projeto-02.yml"
+      - ".github/workflows/2_conciliacao.yml"
 
 jobs:
   projeto-02:
