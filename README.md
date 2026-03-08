@@ -81,5 +81,5 @@ README.md
 
 ## Autor
 
-Denis dos Santos Lima
-GitHub: denis-dsl
+**Denis dos Santos Lima**  
+GitHub: [denis-dsl](https://github.com/denis-dsl)
