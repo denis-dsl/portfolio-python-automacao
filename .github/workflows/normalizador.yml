@@ -1,0 +1,68 @@
+name: Projeto 01 - Excel Normalizer
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "01-normalizador-planilhas/**"
+      - ".github/workflows/normalizador.yml"
+  pull_request:
+    paths:
+      - "01-normalizador-planilhas/**"
+      - ".github/workflows/normalizador.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r 01-normalizador-planilhas/requirements.txt
+          pip install pytest ruff
+
+      - name: Lint (ruff)
+        working-directory: 01-normalizador-planilhas
+        run: |
+          ruff check .
+          ruff format --check .
+
+      - name: Run tests
+        working-directory: 01-normalizador-planilhas
+        run: pytest -q
+
+      - name: Smoke test (generate + normalize)
+        working-directory: 01-normalizador-planilhas
+        run: |
+          python -m src.main generate --mode realistic --rows 30 --out data/input_ci.xlsx
+          python -m src.main normalize data/input_ci.xlsx output/clean_ci.xlsx
+
+      - name: Collect evidence files
+        working-directory: 01-normalizador-planilhas
+        run: |
+          mkdir -p evidence
+
+          cp data/input_ci.xlsx evidence/
+
+          shopt -s nullglob
+          for f in output/runs/*/*.xlsx; do cp "$f" evidence/; done
+          for f in output/runs/*/*.json; do cp "$f" evidence/; done
+          for f in output/runs/*/*.csv; do cp "$f" evidence/; done
+
+      - name: Upload evidence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: before-after-evidence
+          path: 01-normalizador-planilhas/evidence/**
+          if-no-files-found: error
