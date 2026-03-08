@@ -245,6 +245,7 @@ logs/conciliacao.log
 2026-03-07 | INFO | Só no extrato: 2
 2026-03-07 | INFO | Só no sistema: 1
 2026-03-07 | INFO | Divergências: 1
+```
 
 # Tratamento de erros
 
