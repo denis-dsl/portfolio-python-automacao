@@ -64,3 +64,23 @@ jobs:
             02-conciliacao-bancaria/data/sistema.xlsx
             02-conciliacao-bancaria/output/conciliado.xlsx
             02-conciliacao-bancaria/logs/conciliacao.log
+          if-no-files-found: error
+
+      - name: Send email with artifacts
+        if: matrix.python-version == '3.12'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.GMAIL_USER }}
+          password: ${{ secrets.GMAIL_PASS }}
+          subject: Resultado execução conciliação
+          body: Execução concluída. Artefatos em anexo.
+          to: denis.dvps@gmail.com
+          from: ${{ secrets.GMAIL_USER }}
+          secure: true
+          attachments: |
+            02-conciliacao-bancaria/data/extrato.xlsx
+            02-conciliacao-bancaria/data/sistema.xlsx
+            02-conciliacao-bancaria/output/conciliado.xlsx
+            02-conciliacao-bancaria/logs/conciliacao.log

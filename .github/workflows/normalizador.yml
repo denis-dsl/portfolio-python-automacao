@@ -69,11 +69,6 @@ jobs:
           path: 01-normalizador-planilhas/evidence/**
           if-no-files-found: error
 
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-
       - name: Send email with artifacts
         uses: dawidd6/action-send-mail@v3
         with:
@@ -83,7 +78,7 @@ jobs:
           password: ${{ secrets.GMAIL_PASS }}
           subject: Resultado execução normalizador
           body: Execução concluída. Artefatos em anexo.
-          to: seuemail@gmail.com
-          from: GitHub Actions
+          to: denis.dvps@gmail.com
+          from: ${{ secrets.GMAIL_USER }}
           secure: true
-          attachments: artifacts/**
+          attachments: 01-normalizador-planilhas/evidence/**
