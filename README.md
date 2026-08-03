@@ -81,5 +81,8 @@ README.md
 
 ## Autor
 
-**Denis dos Santos Lima**  
+**Denis dos Santos Lima**
+
+Analista de Sistemas | Automação de Processos (RPA) | QA & Testes Automatizados | Python | Robot Framework
+
 GitHub: [denis-dsl](https://github.com/denis-dsl)
